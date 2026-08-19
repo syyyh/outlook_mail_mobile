@@ -1,0 +1,25 @@
+name: outlook_mail_mobile
+description: A local-only Outlook mail client for Android.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.11.0
+  flutter_secure_storage: ^11.0.0
+  html: ^0.15.6
+  path_provider: ^2.1.6
+  share_plus: ^13.3.0
+  webview_flutter: ^4.13.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
