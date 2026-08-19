@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f6f5" />
+    <meta name="description" content="本地邮箱 Web 客户端" />
+    <title>本地邮箱</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="rail" aria-label="主导航">
+        <button class="brand-mark" data-action="home" aria-label="返回首页"><img src="../android/app/src/main/res/drawable-nodpi/miku_mail_icon.png" alt="" /></button>
+        <nav class="rail-nav">
+          <button class="rail-button active" data-action="home" aria-label="邮箱"><span>⌂</span><small>邮箱</small></button>
+          <button class="rail-button" data-action="settings" aria-label="设置"><span>⚙</span><small>设置</small></button>
+        </nav>
+        <div class="rail-bottom"><span class="status-dot"></span><small>本地模式</small></div>
+      </aside>
+
+      <aside class="account-panel" aria-label="账号列表">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">MAIL DESK</p>
+            <h1>本地邮箱</h1>
+          </div>
+          <button class="icon-button" data-action="import" aria-label="添加账号" title="添加账号">＋</button>
+        </div>
+        <div class="account-tools">
+          <label class="search-field compact-search">
+            <span>⌕</span>
+            <input id="account-search" type="search" placeholder="搜索邮箱" autocomplete="off" />
+          </label>
+          <div class="segmented" role="tablist" aria-label="账号筛选">
+            <button class="segment active" data-filter="success">成功 <b id="success-count">0</b></button>
+            <button class="segment" data-filter="all">全部 <b id="all-count">0</b></button>
+            <button class="segment" data-filter="failed">失败 <b id="failed-count">0</b></button>
+          </div>
+        </div>
+        <div id="account-list" class="account-list"></div>
+        <div class="account-footer">
+          <button class="text-button" data-action="export-all">导出账号</button>
+          <button class="text-button" data-action="clear-data">清空本地数据</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="topbar-title">
+            <button class="mobile-back icon-button" data-action="back" aria-label="返回">‹</button>
+            <div>
+              <p class="eyebrow" id="workspace-eyebrow">成功账号</p>
+              <h2 id="workspace-title">选择一个邮箱</h2>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <span class="sync-label" id="sync-label">等待同步</span>
+            <button class="icon-button" data-action="refresh" aria-label="刷新" title="刷新">⟳</button>
+            <button class="primary-button" data-action="import">添加账号 <span>＋</span></button>
+          </div>
+        </header>
+
+        <section id="empty-state" class="empty-state">
+          <div class="empty-glyph">✉</div>
+          <h3>从一个邮箱开始</h3>
+          <p>导入账号后，邮件列表、未读状态和正文缓存都会留在这台设备上。</p>
+          <button class="primary-button" data-action="import">导入账号 <span>＋</span></button>
+        </section>
+
+        <section id="mail-view" class="mail-view hidden">
+          <div class="mail-list-column">
+            <div class="mail-toolbar">
+              <div class="folder-tabs" role="tablist" aria-label="邮件文件夹">
+                <button class="folder-tab active" data-folder="inbox">收件箱 <b id="inbox-count">0</b></button>
+                <button class="folder-tab" data-folder="junkemail">垃圾邮件</button>
+                <button class="folder-tab" data-folder="deleteditems">已删除</button>
+              </div>
+              <label class="search-field mail-search">
+                <span>⌕</span>
+                <input id="mail-search" type="search" placeholder="搜索邮件" autocomplete="off" />
+              </label>
+              <button class="icon-button" data-action="select-all" aria-label="选择全部邮件" title="选择全部邮件">☷</button>
+            </div>
+            <div id="mail-list" class="mail-list"></div>
+          </div>
+          <article id="mail-detail" class="mail-detail"></article>
+        </section>
+      </main>
+    </div>
+
+    <div id="modal-root"></div>
+    <div id="toast-root" class="toast-root" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

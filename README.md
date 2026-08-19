@@ -63,6 +63,16 @@ flutter build apk --release --split-per-abi
 
 Flutter / Dart、Microsoft Graph API、OAuth 2.0 Refresh Token、Dio、flutter_secure_storage、webview_flutter、html、share_plus。
 
+## Web 版
+
+仓库内的 `web/` 是无需构建工具的浏览器版工作区，支持演示数据、账号导入、邮箱筛选、邮件搜索、正文切换、已读、删除、收藏、导出和浏览器本地缓存。启动方式：
+
+```powershell
+python -m http.server 43100
+```
+
+然后打开 <http://127.0.0.1:43100/web/>。浏览器版会直接请求 Microsoft OAuth 和 Graph API，Refresh Token 仅适合保存在个人设备，不建议部署到公共网站。
+
 ## 声明
 
 本项目是非官方个人工具，与 Microsoft、Crypton Future Media 或初音未来官方无隶属、合作或授权关系。项目中的角色主题图标仅用于个人非商业展示；公开分发或商业使用前，请自行确认素材授权。
